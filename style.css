@@ -148,16 +148,34 @@ h2 {
 }
 
 .links a {
-  /* Use underlines for nav links as in the original template. */
-  text-decoration: underline;
+  /* Animated underline effect similar to cassidoo.co */
+  position: relative;
+  display: inline-block;
   margin-right: 16px;
-  color: #96979c;
+  color: #96979c; /* individual links override this via inline color */
   font-size: 0.9rem;
+  text-decoration: none; /* we'll draw our own underline */
+  padding-bottom: 2px; /* space for underline bar */
 }
 
-.links a:hover {
-  text-decoration: underline;
-  opacity: 0.8;
+.links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 4px;
+  width: 100%;
+  background-color: currentColor; /* match the link color */
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease-in-out;
+}
+
+.links a:hover::after,
+.links a:focus-visible::after,
+.links a.active::after {
+  transform: scaleX(1);
 }
 
 @media (max-width: 600px) {

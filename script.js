@@ -72,4 +72,17 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.setItem('darkMode', 'disabled');
     }
   });
+
+  // Active underline for nav links based on current hash
+  const navLinks = Array.from(document.querySelectorAll('.links a'));
+  function setActiveNavFromHash() {
+    const hash = window.location.hash;
+    navLinks.forEach((a) => a.classList.remove('active'));
+    if (!hash) return;
+    const match = navLinks.find((a) => a.getAttribute('href') === hash);
+    if (match) match.classList.add('active');
+  }
+  // Initialize and update on hash changes
+  setActiveNavFromHash();
+  window.addEventListener('hashchange', setActiveNavFromHash);
 });
