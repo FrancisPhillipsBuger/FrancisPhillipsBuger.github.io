@@ -179,8 +179,8 @@ h2 {
 }
 
 .toggler button {
-  flex: 1 1 auto;
-  min-width: 80px;
+  flex: 0 0 auto; /* prevent stretching; keep natural width */
+  min-width: 60px;
 }
 
 @media (max-width: 600px) {
