@@ -1,107 +1,158 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Francis Jian‑Zhai Zhang</title>
-  <meta name="description" content="Homepage of Francis Jian‑Zhai Zhang — Engineering & System Science @ NTHU. Machine learning for materials, APT reconstruction, and scientific AI.">
-  <link rel="stylesheet" href="stylesheet.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Jian‑Zhai (Francis) Zhang</title>
+  <!-- Description and social metadata -->
+  <meta name="description" content="Jian‑Zhai (Francis) Zhang – engineering & system science student focused on AI‑assisted materials design and computational optimization.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Jian‑Zhai (Francis) Zhang">
+  <meta name="twitter:description" content="Engineering & system science student focused on AI, materials design and optimization.">
+  <meta name="twitter:image" content="images/hero.jpg">
+  <meta property="og:title" content="Jian‑Zhai (Francis) Zhang">
+  <meta property="og:description" content="Engineering & system science student at National Tsing Hua University.">
+  <meta property="og:image" content="images/hero.jpg">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <div class="photo">
-        <img src="images/profile.jpg" alt="Francis Jian‑Zhai Zhang headshot">
+    <!-- Header section with name, tagline and portrait -->
+    <div class="header-section">
+      <div class="header-frame">
+        <h1>Jian‑Zhai (Francis) Zhang</h1>
+        <h2>Engineering &amp; System Science Student at NTHU</h2>
       </div>
-      <div class="intro">
-        <div class="name">Francis Jian‑Zhai Zhang</div>
-        <div class="affil">B.S. in Engineering & System Science (2022–2026), National Tsing Hua University (NTHU), Taiwan</div>
-        <div class="small">Undergraduate Research Intern (Dec 2024–May 2027), <a href="https://dailab.site/" target="_blank" rel="noopener">Data Analysis & Interpretation Lab</a>, advised by Prof. Shun‑Chi Wu</div>
-        <div class="links">
-          <span>📧 <a href="mailto:Frank20040506@gmail.com">Frank20040506@gmail.com</a></span>
-          <span>📄 <a href="cv/Francis_CV.docx">CV</a></span>
-          <span>🔗 <a href="#" title="Add your GitHub URL">GitHub</a></span>
-          <span>🎓 <a href="#" title="Add your Google Scholar URL">Google Scholar</a></span>
-          <span>💼 <a href="#" title="Add your LinkedIn URL">LinkedIn</a></span>
-        </div>
+      <div class="img-frame">
+        <!-- Portrait style hero image.  This file lives in the images directory. -->
+        <img id="propic" src="images/hero.jpg" alt="Electrical engineering lab">
       </div>
     </div>
-
-    <div class="section">
-      <h2>About</h2>
-      <p>I was born in Miaoli, Taiwan in 2004. I earned my B.S. degree in Engineering and System Science from NTHU in 2026. From Dec 2024 to May 2027, I worked as an undergraduate research intern in the Data Analysis and Interpretation Laboratory advised by Prof. Shun‑Chi Wu.</p>
-      <p>My research focuses on AI‑assisted tools for materials computation and design, atomic‑scale particle tracking, and atomic‑scale image structural reconstruction. I also co‑founded an independent co‑research group exploring neural operators for the phonon Boltzmann Transport Equation and ECG‑based disease diagnosis.</p>
-      <p>Interests: machine learning, deep learning, inverse design, particle swarm optimization, filter design, and signal/image processing.</p>
+    <!-- Navigation links for different sections.  Feel free to jump to anchors. -->
+    <div class="links">
+      <a href="#education" style="color: rgb(255, 165, 0);">education</a>
+      <a href="#publications" style="color: rgb(0, 153, 220);">publications</a>
+      <a href="#projects" style="color: rgb(74, 74, 77);">projects</a>
+      <a href="#skills" style="color: rgb(255, 68, 107);">skills</a>
+      <a href="mailto:Frank20040506@gmail.com" style="color: rgb(0, 153, 220);">email</a>
+      <a href="tel:+886900090270" style="color: rgb(74, 74, 77);">phone</a>
+      <a href="My%20CV.docx" download style="color: rgb(255, 68, 107);">CV</a>
     </div>
-
-    <div class="section">
-      <h2>Selected Publications</h2>
-
-      <div class="pub">
-        <div class="thumb">thumbnail</div>
-        <div class="desc">
-          <div class="papertitle">Automated Recognition of Atomic‑Scale Tracking via a Kalman‑Based Network and Hungarian Algorithm</div>
-          <div class="small">Jian‑Zhai Zhang</div>
-          <div class="small"><span class="badge">preprint</span> • 2025</div>
-          <!-- Add links when available -->
-          <!-- <a href="#">paper</a> • <a href="#">code</a> -->
-        </div>
+    <!-- Biography switcher.  Buttons allow the reader to toggle between short bio, detailed bio, projects and skills. -->
+    <div class="bio-switcher">
+      <div class="toggler">
+        <button id="short" class="show">Short</button>
+        <button id="long">Detailed</button>
+        <button id="proj">Projects</button>
+        <button id="skill">Skills</button>
       </div>
-
-      <div class="pub">
-        <div class="thumb">thumbnail</div>
-        <div class="desc">
-          <div class="papertitle">Physics‑Guided Recursive MUSIC‑Kalman Nets for Dynamic 3D Atom Probe Tomography</div>
-          <div class="small">Jian‑Zhai Zhang</div>
-          <div class="small"><span class="badge">preprint</span> • 2025</div>
-        </div>
+      <!-- Short bio content -->
+      <div class="bio short show">
+        <p>
+          Jian‑Zhai (Francis) Zhang was born in Miaoli, Taiwan in 2004 and is currently pursuing a B.S. in Engineering and System Science at National Tsing Hua University.  As a research intern under Prof. Shun‑Chi Wu he develops AI‑assisted tools for materials computation and atomic‑scale particle tracking.  Francis co‑founded a student co‑research group exploring neural operators and their applications to phonon transport and disease diagnosis.  His interests span machine learning, inverse design and computational optimization.
+        </p>
+        <p><strong>Currently</strong> he is focusing on AI‑assisted materials design, image reconstruction and novel optimization algorithms.  When not in the lab he enjoys collaborating with peers on open‑source projects.
+        </p>
       </div>
-
-    </div>
-
-    <div class="section">
-      <h2>Research Projects</h2>
-      <ul>
-        <li>A Bayesian Machine for Relaxed Energy Prediction on Metal‑Oxide Catalysts for CO<sub>2</sub> reduction.</li>
-        <li>Graph Neural Networks Meets Bird Swarm Algorithm: a transformative approach to computational electrocatalyst discovery and optimization.</li>
-        <li>E2Nebula: a physics‑equivariant framework for generalizable machine learning interatomic potentials.</li>
-        <li>Unveiling magnetic order in 2D materials via AI‑assisted exploration of the C2DB.</li>
-        <li>Next‑generation small modular pressurized water reactors for sustainable nuclear energy.</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>Skills</h2>
-      <div class="grid">
-        <div>
-          <strong>Programming</strong><br>Python (primary), C
-        </div>
-        <div>
-          <strong>ML / DL</strong><br>PyTorch, TensorFlow, AtomAI, scikit‑learn; CNN, GNN, LSTM, Transformers, VAE, fine‑tuning
-        </div>
-        <div>
-          <strong>Data / Viz</strong><br>NumPy, SciPy, Pandas, Matplotlib, Seaborn, MATLAB
-        </div>
-        <div>
-          <strong>Optimization</strong><br>Genetic algorithms, Particle swarm optimization
-        </div>
-        <div>
-          <strong>Tools</strong><br>LaTeX, Photoshop; HSPICE & Virtuoso
-        </div>
-        <div>
-          <strong>Signal Processing</strong><br>Fourier, Hilbert, Laplace, Wavelet, filter design
-        </div>
+      <!-- Detailed bio content -->
+      <div class="bio long">
+        <p>
+          Born in 2004 in Miaoli, Taiwan, Francis has always been fascinated by the interplay between hardware and computation.  He is expected to earn his B.S. in Engineering and System Science from National Tsing Hua University in June&nbsp;2026.  From December&nbsp;2024 to May&nbsp;2027 he serves as an undergraduate research intern in the <em>Data Analysis and Interpretation Laboratory</em> under Prof.&nbsp;Shun‑Chi Wu, where he develops AI‑assisted tools for materials computation and design, atomic‑scale particle tracking and structural reconstruction.  In addition to his lab work he co‑founded an independent co‑research group that explores neural operators for solving the phonon Boltzmann Transport Equation and ECG‑based disease diagnosis.
+        </p>
+        <p>
+          Francis’ academic interests include machine learning, deep learning, inverse design, particle swarm optimization, filter design, and signal as well as image processing.  Outside of research he is committed to open education and has mentored junior students in programming and data analysis.  His long‑term goal is to develop computational frameworks that accelerate materials discovery and integrate physics‑based models with modern AI techniques.
+        </p>
+        <p>
+          <span id="education"></span>
+          <strong>Education:</strong> National Tsing Hua University, B.S. Engineering &amp; System Science (Sep&nbsp;2022 – Jun&nbsp;2026)<a href="【474907660462925†L71-L115】" class="citation">[1]</a>.  Francis plans to pursue graduate studies in engineering with a focus on machine learning and inverse problems.
+        </p>
+        <p>
+          <span id="publications"></span>
+          <strong>Research Publications:</strong>
+          <ul>
+            <li>Automated Recognition of Atomic‑Scale Tracking via a Kalman‑Based Network and Hungarian Algorithm.</li>
+            <li>Physics‑Guided Recursive MUSIC–Kalman Nets for Dynamic 3D Atom Probe Tomography.</li>
+          </ul>
+        </p>
+      </div>
+      <!-- Projects content -->
+      <div class="bio projects">
+        <span id="projects"></span>
+        <p>Below are some of the research projects Francis has undertaken:</p>
+        <ul>
+          <li><em>Bayesian Machine for Relaxed Energy Prediction on Metal‑Oxide Catalysts for CO<sub>2</sub> Reduction</em> – using probabilistic models to accelerate catalyst discovery.</li>
+          <li><em>Graph Neural Networks Meets Bird Swarm Algorithm</em> – a transformative approach to computational electrocatalyst discovery and optimization.</li>
+          <li><em>E2Nebula</em> – a physics‑equivariant framework for generalizable machine learning interatomic potentials.</li>
+          <li><em>Unveiling Magnetic Order in 2D Materials</em> via AI‑assisted exploration of the C2DB database.</li>
+          <li><em>Next‑Generation Small Modular Pressurized Water Reactors</em> for sustainable nuclear energy<a href="【904323187696576†L139-L174】" class="citation">[2]</a>.</li>
+        </ul>
+      </div>
+      <!-- Skills content -->
+      <div class="bio skills">
+        <span id="skills"></span>
+        <p>The following table summarizes Francis’ technical skills.  Each entry lists tools or concepts without long sentences.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Keywords</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Programming Languages</td>
+              <td>Python, C</td>
+            </tr>
+            <tr>
+              <td>ML Libraries</td>
+              <td>PyTorch, TensorFlow, AtomAI, scikit‑learn</td>
+            </tr>
+            <tr>
+              <td>Data Analysis</td>
+              <td>MATLAB, R, NumPy, SciPy, Pandas</td>
+            </tr>
+            <tr>
+              <td>Visualization</td>
+              <td>MATLAB, Matplotlib, Seaborn</td>
+            </tr>
+            <tr>
+              <td>CAD &amp; Simulation</td>
+              <td>HSPICE, Cadence Virtuoso</td>
+            </tr>
+            <tr>
+              <td>Research Tools</td>
+              <td>LaTeX, Photoshop</td>
+            </tr>
+            <tr>
+              <td>Optimization Algorithms</td>
+              <td>Genetic Algorithm, Particle Swarm Algorithm</td>
+            </tr>
+            <tr>
+              <td>Machine Learning</td>
+              <td>Anomaly Detection, Bayesian Networks, Decision Trees, Support Vector Machines</td>
+            </tr>
+            <tr>
+              <td>Deep Learning</td>
+              <td>CNN, DNN, GNN, LSTM, RNN, VAE, Transformers, Fine‑tuning</td>
+            </tr>
+            <tr>
+              <td>Time–Frequency Analysis</td>
+              <td>Fourier Transform, Hilbert Transform, Laplace Transform, Wavelet Transform, Filter Design</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-
-    <div class="section">
-      <h2>Contact</h2>
-      <p>Email is best. Phone (Taiwan): (+886) 900‑090‑270.</p>
-    </div>
-
-    <div class="footer">
-      © 2025 Francis Jian‑Zhai Zhang — Theme inspired by <a href="https://github.com/jonbarron/jonbarron.github.io">Jon Barron</a>.
+    <!-- Dark‑mode toggler sits outside of content and floats in the top right corner. -->
+    <div class="dark-mode-toggler">
+      <input type="checkbox" id="toggler">
+      <label for="toggler" aria-label="Toggler for Dark Mode"></label>
     </div>
   </div>
+  <div class="attribution">
+    <small>Website design adapted from <a href="https://web.stanford.edu/~bohg/" target="_blank" style="color: rgb(0, 153, 220);">Jeannette Bohg’s page</a>【474907660462925†L71-L115】, using elements inspired by <a href="http://cassidoo.co/" target="_blank" style="color: rgb(255, 68, 107);">Cassidy&nbsp;Williams</a>.  The hero image depicts an electrical engineering lab station and is licensed under CC BY‑SA&nbsp;2.0【904323187696576†L139-L174】.  Citations appear as numbered links [1], [2] throughout the text.</small>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

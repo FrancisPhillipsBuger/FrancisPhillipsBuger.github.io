@@ -1,0 +1,276 @@
+/*
+ * Custom styles for Francis’ personal page.
+ *
+ * The layout and many of the dark‑mode interactions take inspiration
+ * from Jeannette Bohg’s personal website and Cassidy Williams’ template.
+ */
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto Mono", monospace;
+  background: #fff;
+  color: #000;
+}
+
+/* Dark mode applies when the <body> element has the class 'dark-mode'. */
+body.dark-mode {
+  background: #000;
+  color: #fff;
+}
+
+/* Universal selection highlight. */
+::selection {
+  background-color: #eb4888;
+  color: #000;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  border: 2px solid #96979c;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #96979c;
+  font-size: 0.9rem;
+  background: transparent;
+  transition: 0.3s ease all;
+}
+
+button:hover {
+  background: rgba(150, 151, 156, 0.1);
+  cursor: pointer;
+}
+
+/* Highlight the active tab. */
+.toggler .show,
+.toggler button.active {
+  border-color: #eb4888;
+  color: #eb4888;
+}
+
+.container {
+  margin: 50px auto;
+  padding: 5px;
+  max-width: 800px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+}
+
+.header-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.header-frame {
+  max-width: 400px;
+}
+
+h1 {
+  font-weight: 400;
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+h2 {
+  color: #96979c;
+  font-weight: 300;
+  margin: 0.4em 0 0;
+  font-size: 1.1rem;
+}
+
+.img-frame {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  margin: 10px 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.img-frame img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: 100%;
+}
+
+.links {
+  margin: 25px 0;
+}
+
+.links a {
+  text-decoration: none;
+  margin-right: 16px;
+  color: #96979c;
+  font-size: 0.9rem;
+}
+
+.links a:hover {
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .links {
+    text-align: center;
+  }
+  .links a {
+    display: inline-block;
+    margin: 6px 10px;
+  }
+}
+
+/* Toggle button group */
+.toggler {
+  margin: 25px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.toggler button {
+  flex: 1 1 auto;
+  min-width: 80px;
+}
+
+@media (max-width: 600px) {
+  .toggler {
+    justify-content: center;
+  }
+}
+
+/* Bio sections hidden by default except the one with .show */
+.bio {
+  display: none;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.bio.show {
+  display: block;
+}
+
+/* List style for projects */
+.bio ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.bio li {
+  margin-bottom: 6px;
+}
+
+/* Table styling for skills */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+
+th, td {
+  border: 1px solid #d0d0d0;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Dark mode table adjustments */
+body.dark-mode th {
+  background-color: #222;
+  color: #eee;
+}
+body.dark-mode td,
+body.dark-mode th {
+  border-color: #444;
+}
+body.dark-mode table {
+  color: #ddd;
+}
+
+/* Citation links appear inline and small */
+.citation {
+  font-size: 0.75rem;
+  vertical-align: super;
+  text-decoration: none;
+}
+
+.citation:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode toggler positioning */
+.dark-mode-toggler {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.dark-mode-toggler input[type="checkbox"] {
+  display: none;
+}
+
+.dark-mode-toggler input[type="checkbox"] + label::before {
+  content: "";
+  display: block;
+  height: 26px;
+  width: 60px;
+  background: #fff;
+  border: 2px solid #96979c;
+  border-radius: 15px;
+  position: absolute;
+  top: 0;
+  left: -65px;
+  transition: background 0.4s ease;
+}
+
+.dark-mode-toggler input[type="checkbox"] + label::after {
+  content: "";
+  display: block;
+  height: 20px;
+  width: 20px;
+  background: #96979c;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: -62px;
+  transition: left 0.4s ease, background 0.4s ease;
+}
+
+.dark-mode-toggler input[type="checkbox"]:checked + label::before {
+  background: #000;
+  border: 2px solid #fff;
+}
+
+.dark-mode-toggler input[type="checkbox"]:checked + label::after {
+  left: -28px;
+  background: #000;
+  border: 2px solid #fff;
+}
+
+/* Attribution styling */
+.attribution {
+  margin: 40px auto;
+  max-width: 800px;
+  font-size: 0.8rem;
+  color: #96979c;
+  line-height: 1.4;
+}
+
+body.dark-mode .attribution {
+  color: #777;
+}
