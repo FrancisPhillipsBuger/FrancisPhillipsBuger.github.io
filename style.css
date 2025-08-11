@@ -12,10 +12,24 @@ html, body {
   font-family: "Roboto Mono", monospace;
   background: #fff;
   color: #000;
+  /* Ensure the body always covers at least the full viewport height so that the
+     background color extends to the bottom of the page.  Without this, short
+     pages in dark mode expose the html element's white background at the
+     bottom of the viewport. */
+  min-height: 100vh;
 }
 
 /* Dark mode applies when the <body> element has the class 'dark-mode'. */
 body.dark-mode {
+  background: #000;
+  color: #fff;
+}
+
+/* Apply the dark mode background and foreground colours to the <html> element when
+   it has the dark-mode class.  This ensures that areas outside of the body (for
+   example, when the content is shorter than the viewport height) still have the
+   correct dark background instead of reverting to the default white canvas. */
+html.dark-mode {
   background: #000;
   color: #fff;
 }
@@ -27,38 +41,63 @@ body.dark-mode {
 }
 
 button {
-  width: 100px;
-  height: 30px;
+  /* Pill shaped toggle buttons inspired by Jeannette Bohg’s original design. */
+  display: inline-block;
+  min-width: 100px;
+  height: 38px;
+  padding: 4px 20px;
   border: 2px solid #96979c;
-  border-radius: 15px;
+  border-radius: 30px;
   box-sizing: border-box;
   color: #96979c;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-family: inherit;
   background: transparent;
-  transition: 0.3s ease all;
-}
-
-button:hover {
-  background: rgba(150, 151, 156, 0.1);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   cursor: pointer;
 }
 
-/* Highlight the active tab. */
-.toggler .show,
-.toggler button.active {
+button:hover {
+  /* Subtle hover effect: light grey on light mode, semi‑transparent on dark mode. */
+  background: rgba(150, 151, 156, 0.1);
+}
+
+/* Highlight the active button.  In light mode, active buttons have a white interior with
+   coloured text and border.  In dark mode the interior uses a semi‑transparent tint. */
+button.active {
   border-color: #eb4888;
   color: #eb4888;
+  background-color: #fff;
+}
+
+body.dark-mode button.active {
+  background-color: rgba(235, 72, 136, 0.15);
+}
+
+/* Dark‑mode adjustments for buttons: more contrast for default state. */
+body.dark-mode button {
+  border-color: #777;
+  color: #aaa;
+  background: transparent;
+}
+
+body.dark-mode button:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .container {
-  margin: 50px auto;
-  padding: 5px;
+  /* Use padding instead of top margin so that the body's background colour remains visible in dark mode.
+     A top margin on the first child can collapse with the body's margin and reveal the html's default
+     background (white) as a bar at the top of the page.  By using padding we avoid that collapse. */
+  margin: 0 auto;
+  padding: 50px 5px 5px;
   max-width: 800px;
 }
 
 @media (max-width: 600px) {
   .container {
-    padding: 20px;
+    /* Add top padding on small screens as well to prevent margin collapse. */
+    padding: 40px 20px 20px;
   }
 }
 
@@ -109,14 +148,16 @@ h2 {
 }
 
 .links a {
-  text-decoration: none;
+  /* Use underlines for nav links as in the original template. */
+  text-decoration: underline;
   margin-right: 16px;
   color: #96979c;
   font-size: 0.9rem;
 }
 
 .links a:hover {
-  font-style: italic;
+  text-decoration: underline;
+  opacity: 0.8;
 }
 
 @media (max-width: 600px) {
@@ -201,11 +242,13 @@ body.dark-mode table {
   color: #ddd;
 }
 
-/* Citation links appear inline and small */
+/* Citation markers appear inline and small.  Apply to any element with the 'citation' class (e.g. <a>, <span>). */
 .citation {
   font-size: 0.75rem;
   vertical-align: super;
   text-decoration: none;
+  cursor: default;
+  color: inherit;
 }
 
 .citation:hover {
@@ -258,8 +301,25 @@ body.dark-mode table {
 
 .dark-mode-toggler input[type="checkbox"]:checked + label::after {
   left: -28px;
-  background: #000;
+  /* When dark mode is enabled the knob uses the accent color so it remains visible on a dark background. */
+  background: #eb4888;
   border: 2px solid #fff;
+}
+
+/* Additional styling for dark mode toggle in dark mode: adjust the track and knob colours for better contrast. */
+body.dark-mode .dark-mode-toggler input[type="checkbox"] + label::before {
+  background: #222;
+  border-color: #888;
+}
+
+body.dark-mode .dark-mode-toggler input[type="checkbox"] + label::after {
+  background: #888;
+  border-color: #222;
+}
+
+body.dark-mode .dark-mode-toggler input[type="checkbox"]:checked + label::after {
+  background: #eb4888;
+  border-color: #eb4888;
 }
 
 /* Attribution styling */

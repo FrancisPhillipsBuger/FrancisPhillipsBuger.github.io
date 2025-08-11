@@ -1,6 +1,9 @@
 // JavaScript to handle tab toggling and dark mode on Francis' personal page.
 document.addEventListener('DOMContentLoaded', function () {
   const body = document.body;
+  // Also reference the root <html> element to apply dark-mode class there.  This ensures the
+  // entire page, including areas outside the body, inherits the dark background.
+  const htmlEl = document.documentElement;
   // Gather references to each bio section
   const bioSections = {
     short: document.querySelector('.bio.short'),
@@ -54,15 +57,18 @@ document.addEventListener('DOMContentLoaded', function () {
   const storedPref = localStorage.getItem('darkMode');
   if (storedPref === 'enabled') {
     body.classList.add('dark-mode');
+    htmlEl.classList.add('dark-mode');
     darkToggle.checked = true;
   }
   // Listen for changes on the checkbox
   darkToggle.addEventListener('change', function () {
     if (this.checked) {
       body.classList.add('dark-mode');
+      htmlEl.classList.add('dark-mode');
       localStorage.setItem('darkMode', 'enabled');
     } else {
       body.classList.remove('dark-mode');
+      htmlEl.classList.remove('dark-mode');
       localStorage.setItem('darkMode', 'disabled');
     }
   });
