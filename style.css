@@ -19,6 +19,9 @@ html, body {
   min-height: 100vh;
 }
 
+/* Always honor the HTML `hidden` attribute, even if later rules set display. */
+[hidden] { display: none !important; }
+
 /* Dark mode applies when the <body> element has the class 'dark-mode'. */
 body.dark-mode {
   background: #000;
@@ -109,7 +112,8 @@ body.dark-mode button:hover {
 }
 
 .header-frame {
-  max-width: 400px;
+  /* Allow more room for the name and subtitle text */
+  max-width: 470px;
 }
 
 h1 {
@@ -178,6 +182,22 @@ h2 {
   transform: scaleX(1);
 }
 
+/* Reusable animated underline for inline links in content
+   Works across multi-line wrapped text */
+.animated-link {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 4px;
+  transition: background-size 200ms ease-in-out;
+}
+.animated-link:hover,
+.animated-link:focus-visible,
+.animated-link.active {
+  background-size: 100% 4px;
+}
+
 @media (max-width: 600px) {
   .links {
     text-align: center;
@@ -194,11 +214,17 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  align-items: center; /* vertically align label with buttons */
 }
 
 .toggler button {
   flex: 0 0 auto; /* prevent stretching; keep natural width */
   min-width: 60px;
+}
+
+/* Ensure the "Bio:" label aligns with the buttons and has no extra margins */
+.toggler p {
+  margin: 0;
 }
 
 @media (max-width: 600px) {
@@ -226,6 +252,78 @@ h2 {
 
 .bio li {
   margin-bottom: 6px;
+}
+
+/* Research list styling */
+.research-intro {
+  color: #96979c;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.research-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.research-item {
+  padding: 6px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 999px;
+  background: #fff;
+  color: #333;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.05s ease;
+}
+
+.research-item:hover,
+.research-item:focus-visible {
+  border-color: #eb4888;
+  color: #eb4888;
+}
+
+.research-item.selected {
+  background: rgba(235, 72, 136, 0.12);
+  border-color: #eb4888;
+  color: #eb4888;
+}
+
+.research-item:active {
+  transform: scale(0.98);
+}
+
+.research-sep {
+  display: block;
+  width: 100%;
+  margin: 6px 0 0;
+  color: #96979c;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Dark mode for research list */
+body.dark-mode .research-item {
+  background: #111;
+  color: #ddd;
+  border-color: #444;
+}
+
+body.dark-mode .research-item:hover,
+body.dark-mode .research-item:focus-visible {
+  color: #eb4888;
+  border-color: #eb4888;
+}
+
+body.dark-mode .research-item.selected {
+  background: rgba(235, 72, 136, 0.18);
+  border-color: #eb4888;
+  color: #eb4888;
 }
 
 /* Table styling for skills */
@@ -351,4 +449,441 @@ body.dark-mode .dark-mode-toggler input[type="checkbox"]:checked + label::after 
 
 body.dark-mode .attribution {
   color: #777;
+}
+
+/* Skills cards horizontal scroller */
+.skills-cards {
+  display: flex;
+  gap: 18px;
+  margin-top: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 6px 16px;
+  scroll-padding: 6px;
+  border-radius: 14px;
+  position: relative;
+  background: transparent;
+}
+
+.skill-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  padding: 22px;
+  flex: 0 0 auto;
+  width: clamp(260px, 44vw, 360px);
+  scroll-snap-align: start;
+}
+
+.skill-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 165, 0, 0.12);
+  color: #ff9900;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.skill-title {
+  margin: 0 0 6px 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.skill-desc {
+  margin: 0;
+  color: #4a4b50;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* Dark mode support for skills cards */
+body.dark-mode .skill-card {
+  background: #111;
+  border-color: #333;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .skill-title {
+  color: #fff;
+}
+
+body.dark-mode .skill-desc {
+  color: #d0d0d0;
+}
+
+body.dark-mode .skill-icon {
+  background: rgba(255, 165, 0, 0.2);
+  color: #ffb84d;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Subtle horizontal scrollbar styling (WebKit) */
+.skills-cards::-webkit-scrollbar {
+  height: 8px;
+}
+
+.skills-cards::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 999px;
+}
+
+.skills-cards::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 155, 0.3);
+  border-radius: 999px;
+}
+
+body.dark-mode .skills-cards::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body.dark-mode .skills-cards::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* Edge fade masks for slide-in/out feeling */
+.skills-cards::before,
+.skills-cards::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 56px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.skills-cards::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    #fff 0%,
+    rgba(255, 255, 255, 0.85) 35%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.skills-cards::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    #fff 0%,
+    rgba(255, 255, 255, 0.85) 35%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+body.dark-mode .skills-cards::before {
+  background: linear-gradient(
+    to right,
+    #000 0%,
+    rgba(0, 0, 0, 0.75) 35%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+body.dark-mode .skills-cards::after {
+  background: linear-gradient(
+    to left,
+    #000 0%,
+    rgba(0, 0, 0, 0.75) 35%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* Research section (modeled after Jon Barron’s compact card list) */
+.research-section {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 2px solid #eaeaea; /* separate from previous area */
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.section-title {
+  margin: 0 0 6px 0;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #000; /* ensure pure black in light mode */
+}
+
+.section-subtitle {
+  margin: 0 0 18px 0;
+  color: #96979c;
+  font-size: 0.95rem;
+}
+
+.papers,
+.projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* Increase the vertical spacing between adjacent cards */
+  gap: 28px;
+}
+
+@media (min-width: 720px) {
+  .papers,
+  .projects {
+    grid-template-columns: 1fr;
+  }
+}
+
+.paper {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 14px;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.paper-thumb {
+  width: 160px;
+  height: 100px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f6f6f6;
+  display: grid;
+  place-items: center;
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.thumb-placeholder {
+  padding: 6px 8px;
+}
+
+.paper-title {
+  margin: 0 0 4px 0;
+  font-size: 1.05rem;
+}
+
+.paper-authors,
+.paper-venue,
+.paper-links,
+.paper-abstract {
+  margin: 4px 0;
+  color: #4a4b50;
+}
+
+.paper-links a {
+  color: #0099dc;
+  text-decoration: none;
+}
+
+.paper-links a:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode for research section */
+body.dark-mode .paper {
+  background: #111;
+  border-color: #333;
+}
+
+/* In dark mode, make section titles white for proper contrast */
+body.dark-mode .section-title {
+  color: #fff;
+}
+
+body.dark-mode .paper-thumb {
+  background: #1a1a1a;
+  color: #aaa;
+}
+
+body.dark-mode .paper-authors,
+body.dark-mode .paper-venue,
+body.dark-mode .paper-links,
+body.dark-mode .paper-abstract {
+  color: #d0d0d0;
+}
+
+/* Research filter menu (years/tags/type) inspired by cassidoo.co/blog */
+.research-menu {
+  margin: 20px 0 14px;
+  padding: 6px 8px;
+  background: #f8f9fb; /* subtle panel background for separation */
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+
+/* Simple row for the filter enable switch */
+.filter-toggle {
+  margin: 0 0 6px;
+  color: #96979c;
+  font-size: 0.9rem;
+}
+
+/* Switch control */
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.switch input[type="checkbox"] {
+  display: none;
+}
+
+.switch .switch-ui {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 18px;
+  background: #e9e9ee;
+  border: 2px solid #c4c5cb;
+  border-radius: 999px;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.switch .switch-ui::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #bdbec4;
+  transform: translate(0, -50%);
+  transition: transform 180ms cubic-bezier(0.2, 0, 0, 1), background-color 160ms ease;
+}
+
+.switch input[type="checkbox"]:checked + .switch-ui {
+  background: rgba(235, 72, 136, 0.28);
+  border-color: #eb4888;
+}
+
+.switch input[type="checkbox"]:checked + .switch-ui::after {
+  transform: translate(16px, -50%);
+  background: #eb4888;
+}
+
+.switch .switch-text {
+  color: #96979c;
+}
+
+body.dark-mode .switch .switch-ui {
+  background: #222;
+  border-color: #555;
+}
+
+body.dark-mode .switch .switch-ui::after {
+  background: #777;
+}
+
+body.dark-mode .switch input[type="checkbox"]:checked + .switch-ui {
+  background: #eb4888;
+  border-color: #eb4888;
+}
+
+body.dark-mode .switch input[type="checkbox"]:checked + .switch-ui::after {
+  background: #111;
+}
+
+.switch .switch-ui:focus-visible {
+  outline: 2px solid #0099dc;
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .section-header {
+    align-items: flex-end;
+  }
+  .filter-toggle {
+    margin-bottom: 10px;
+  }
+}
+
+.menu-divider {
+  border: none;
+  border-top: 2px solid #e6e6e6;
+  margin: 6px 0;
+}
+
+.menu-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  line-height: 0.2; /* tighter row spacing */
+}
+
+.menu-item,
+.menu-row a {
+  position: relative;
+  color: #111;
+  text-decoration: none;
+  font-size: 0.8rem; /* smaller text */
+  line-height: 0.2; /* tighter line height on items */
+}
+
+.menu-item::after,
+.menu-row a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease-in-out;
+}
+
+.menu-item:hover::after,
+.menu-item.active::after,
+.menu-row a:hover::after,
+.menu-row a.active::after {
+  transform: scaleX(1);
+}
+
+.menu-item {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Color accents similar to Cassidy's tags: rotate colors with nth-child */
+.menu-row.years .menu-item:nth-child(4n+1),
+.menu-row.tags .menu-item:nth-child(4n+1),
+.menu-row a:nth-child(4n+1) { color: #eac15a; }
+
+.menu-row.years .menu-item:nth-child(4n+2),
+.menu-row.tags .menu-item:nth-child(4n+2),
+.menu-row a:nth-child(4n+2) { color: #74c7ec; }
+
+.menu-row.years .menu-item:nth-child(4n+3),
+.menu-row.tags .menu-item:nth-child(4n+3),
+.menu-row a:nth-child(4n+3) { color: #f08ca0; }
+
+.menu-row.years .menu-item:nth-child(4n+4),
+.menu-row.tags .menu-item:nth-child(4n+4),
+.menu-row a:nth-child(4n+4) { color: #66d19e; }
+
+/* Dark mode tweaks */
+body.dark-mode .menu-divider { border-top-color: #333; }
+body.dark-mode .menu-item, body.dark-mode .menu-row a { color: #ddd; }
+body.dark-mode .research-menu {
+  background: #0f0f10;
+  border-color: #222;
 }
