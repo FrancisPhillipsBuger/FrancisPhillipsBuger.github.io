@@ -135,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (namePrimaryEl) {
     const englishText = namePrimaryEl.textContent.trim();
     const chineseText = namePrimaryEl.getAttribute('data-alt') || englishText;
+    const phoneticText = namePrimaryEl.getAttribute('data-phonetic') || '';
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // Utilities for async typing/deleting
@@ -160,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const typeSpeed = 80;      // ms per character when typing
       const deleteSpeed = 55;    // ms per character when deleting
       const holdMs = 1200;       // pause after typing a full name
-      let showEnglish = true;
+      let phase = 0; // 0: English, 1: Chinese, 2: Phonetic
 
       // Add caret style
       namePrimaryEl.classList.add('typewriter');
@@ -168,22 +169,24 @@ document.addEventListener('DOMContentLoaded', function () {
       // Run forever
       // eslint-disable-next-line no-constant-condition
       while (true) {
-        const nextText = showEnglish ? englishText : chineseText;
+        const options = [englishText, chineseText, phoneticText || englishText];
+        const nextText = options[phase % options.length];
         await typeText(nextText, typeSpeed);
         await sleep(holdMs);
         await deleteText(deleteSpeed);
         await sleep(350);
-        showEnglish = !showEnglish;
+        phase = (phase + 1) % options.length;
       }
     }
 
     if (prefersReduced) {
-      // Respect reduced motion: just swap periodically without animation
-      let showEnglish = true;
-      namePrimaryEl.textContent = englishText;
+      // Respect reduced motion: cycle through the three forms without typing effect
+      const options = [englishText, chineseText, phoneticText || englishText];
+      let idx = 0;
+      namePrimaryEl.textContent = options[idx];
       setInterval(() => {
-        showEnglish = !showEnglish;
-        namePrimaryEl.textContent = showEnglish ? englishText : chineseText;
+        idx = (idx + 1) % options.length;
+        namePrimaryEl.textContent = options[idx];
       }, 3000);
     } else {
       // Start animated loop

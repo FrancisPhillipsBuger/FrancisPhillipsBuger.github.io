@@ -152,7 +152,7 @@ h1 {
 .name-secondary {
   display: block;
   line-height: 1.1;
-  font-size: 0.88em; /* slightly smaller than primary */
+  font-size: 0.65em; /* slightly smaller than primary */
   margin-top: 0.15em;
 }
 
@@ -687,20 +687,19 @@ body.dark-mode .skills-cards::after {
   font-size: 0.95rem;
 }
 
-.papers,
-.projects {
+.research-lists {
   display: grid;
   grid-template-columns: 1fr;
-  /* Increase the vertical spacing between adjacent cards */
-  gap: 28px;
+  gap: 28px; /* vertical space between cards */
 }
 
-@media (min-width: 720px) {
-  .papers,
-  .projects {
-    grid-template-columns: 1fr;
-  }
+/* Make inner lists not generate their own boxes so items participate in the same grid */
+.research-lists > .papers,
+.research-lists > .projects {
+  display: contents;
 }
+
+/* No extra media-rule needed because the unified grid is 1 column */
 
 .paper {
   display: grid;
