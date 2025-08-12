@@ -100,14 +100,14 @@ body.dark-mode button:hover {
      A top margin on the first child can collapse with the body's margin and reveal the html's default
      background (white) as a bar at the top of the page.  By using padding we avoid that collapse. */
   margin: 0 auto;
-  padding: calc(50px + var(--safe-top, 0px)) max(5px, var(--safe-right, 0px)) max(5px, var(--safe-bottom, 0px)) max(5px, var(--safe-left, 0px));
+  padding: calc(50px + var(--safe-top, 0px)) max(5px, var(--safe-right, 0px)) calc(32px + var(--safe-bottom, 0px)) max(5px, var(--safe-left, 0px));
   max-width: 800px;
 }
 
 @media (max-width: 600px) {
   .container {
     /* Add top padding on small screens as well to prevent margin collapse. */
-    padding: calc(40px + var(--safe-top, 0px)) max(20px, var(--safe-right, 0px)) max(20px, var(--safe-bottom, 0px)) max(20px, var(--safe-left, 0px));
+    padding: calc(40px + var(--safe-top, 0px)) max(20px, var(--safe-right, 0px)) calc(28px + var(--safe-bottom, 0px)) max(20px, var(--safe-left, 0px));
   }
 }
 
@@ -554,7 +554,7 @@ body.dark-mode .dark-mode-toggler input[type="checkbox"]:checked + label::after 
 /* Attribution styling */
 .attribution {
   /* Align with the main container width and horizontal padding */
-  margin: 24px auto 16px;
+  margin: 24px auto 24px;
   max-width: 800px;
   padding: 0 max(5px, var(--safe-right, 0px)) 0 max(5px, var(--safe-left, 0px));
   font-size: 0.85rem;
@@ -1053,8 +1053,10 @@ body.dark-mode .snackbar {
 }
 
 /* Ensure page doesn't have large empty space below last element in light/dark modes */
+html, body { height: 100%; }
+/* Provide a small breathing space after the last element without causing overflow */
 body::after {
   content: "";
   display: block;
-  height: max(10px, var(--safe-bottom, 0px));
+  height: max(16px, var(--safe-bottom, 0px));
 }
