@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     long: document.querySelector('.bio.long'),
     research: document.querySelector('.bio.research'),
     skills: document.querySelector('.bio.skills'),
+    interests: document.querySelector('.bio.interests'),
   };
   // Gather references to each button
   const buttons = {
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     long: document.getElementById('long'),
     research: document.getElementById('research-interests'),
     skill: document.getElementById('skill'),
+    interests: document.getElementById('daily-interests'),
   };
 
   /**
@@ -52,6 +54,9 @@ document.addEventListener('DOMContentLoaded', function () {
     buttons.research.addEventListener('click', () => showSection('research', 'research'));
   }
   buttons.skill.addEventListener('click', () => showSection('skills', 'skill'));
+  if (buttons.interests) {
+    buttons.interests.addEventListener('click', () => showSection('interests', 'interests'));
+  }
 
   // Interactive research tags: toggle selection and persist
   const researchItems = Array.from(document.querySelectorAll('.research-item'));

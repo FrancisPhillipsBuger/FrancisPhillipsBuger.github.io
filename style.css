@@ -305,6 +305,58 @@ h2 {
   display: block;
 }
 
+/* About list (two-column rows with subtle dividers) */
+.about-list {
+  display: grid;
+  grid-template-columns: 1fr; /* rows stack; each row is its own grid */
+  border-top: 2px solid #eaeaea;
+  margin-top: 12px;
+}
+
+.about-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 18px;
+  padding: 14px 0;
+  border-bottom: 2px solid #eaeaea;
+  align-items: start;
+}
+
+.about-label {
+  color: #96979c;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.about-content {
+  color: #111;
+  line-height: 1.9;
+}
+
+@media (max-width: 560px) {
+  .about-row {
+    grid-template-columns: 1fr; /* stack label on top on small screens */
+    gap: 6px;
+  }
+}
+
+/* Dark mode for about list */
+body.dark-mode .about-list {
+  border-top-color: #222;
+}
+
+body.dark-mode .about-row {
+  border-bottom-color: #222;
+}
+
+body.dark-mode .about-label {
+  color: #bbb;
+}
+
+body.dark-mode .about-content {
+  color: #ddd;
+}
+
 /* List style for projects */
 .bio ul {
   list-style-type: disc;
