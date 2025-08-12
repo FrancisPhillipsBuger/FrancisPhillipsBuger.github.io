@@ -765,7 +765,7 @@ body.dark-mode .news-date { color: #fff; }
 body.dark-mode .news-text { color: #ddd; }
 
 /* collapsed state: only show first 4 items */
-.news-card.collapsed .news-list > li:nth-child(n+5) { display: none; }
+.news-card.collapsed .news-list > li:nth-child(n+4) { display: none; }
 
 .section-subtitle {
   margin: 0 0 18px 0;

@@ -150,6 +150,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Force external links to open in new tab; keep in-page anchors (#...) in same tab
+  document.querySelectorAll('a[href]').forEach((a) => {
+    const href = a.getAttribute('href');
+    if (!href || href.startsWith('#')) return; // keep same-page anchors
+    a.setAttribute('target', '_blank');
+    const existingRel = a.getAttribute('rel') || '';
+    if (!existingRel.includes('noopener')) {
+      a.setAttribute('rel', (existingRel ? existingRel + ' ' : '') + 'noopener');
+    }
+  });
+
   // --- Auto toggle primary name with typewriter effect (English <-> Chinese) ---
   const namePrimaryEl = document.getElementById('name-primary');
   if (namePrimaryEl) {
