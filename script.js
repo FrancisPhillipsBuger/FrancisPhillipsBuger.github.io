@@ -130,6 +130,67 @@ document.addEventListener('DOMContentLoaded', function () {
   bindComingSoon(document.getElementById('link-github'));
   bindComingSoon(document.getElementById('link-cv'));
 
+  // --- Auto toggle primary name with typewriter effect (English <-> Chinese) ---
+  const namePrimaryEl = document.getElementById('name-primary');
+  if (namePrimaryEl) {
+    const englishText = namePrimaryEl.textContent.trim();
+    const chineseText = namePrimaryEl.getAttribute('data-alt') || englishText;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Utilities for async typing/deleting
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+    async function typeText(text, speedMs) {
+      namePrimaryEl.textContent = '';
+      for (let i = 1; i <= text.length; i += 1) {
+        namePrimaryEl.textContent = text.slice(0, i);
+        await sleep(speedMs);
+      }
+    }
+
+    async function deleteText(speedMs) {
+      const current = namePrimaryEl.textContent;
+      for (let i = current.length; i >= 0; i -= 1) {
+        namePrimaryEl.textContent = current.slice(0, i);
+        await sleep(speedMs);
+      }
+    }
+
+    async function loopTypewriter() {
+      const typeSpeed = 80;      // ms per character when typing
+      const deleteSpeed = 55;    // ms per character when deleting
+      const holdMs = 1200;       // pause after typing a full name
+      let showEnglish = true;
+
+      // Add caret style
+      namePrimaryEl.classList.add('typewriter');
+
+      // Run forever
+      // eslint-disable-next-line no-constant-condition
+      while (true) {
+        const nextText = showEnglish ? englishText : chineseText;
+        await typeText(nextText, typeSpeed);
+        await sleep(holdMs);
+        await deleteText(deleteSpeed);
+        await sleep(350);
+        showEnglish = !showEnglish;
+      }
+    }
+
+    if (prefersReduced) {
+      // Respect reduced motion: just swap periodically without animation
+      let showEnglish = true;
+      namePrimaryEl.textContent = englishText;
+      setInterval(() => {
+        showEnglish = !showEnglish;
+        namePrimaryEl.textContent = showEnglish ? englishText : chineseText;
+      }, 3000);
+    } else {
+      // Start animated loop
+      loopTypewriter();
+    }
+  }
+
   // --- Research filter menu (years, tags, type) ---
   const researchContainer = document.getElementById('research');
   if (researchContainer) {
