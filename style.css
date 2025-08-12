@@ -553,11 +553,13 @@ body.dark-mode .dark-mode-toggler input[type="checkbox"]:checked + label::after 
 
 /* Attribution styling */
 .attribution {
-  margin: 40px auto;
+  /* Align with the main container width and horizontal padding */
+  margin: 24px auto 16px;
   max-width: 800px;
-  font-size: 0.8rem;
+  padding: 0 max(5px, var(--safe-right, 0px)) 0 max(5px, var(--safe-left, 0px));
+  font-size: 0.85rem;
   color: #96979c;
-  line-height: 1.4;
+  line-height: 1.6;
 }
 
 body.dark-mode .attribution {
@@ -1038,4 +1040,11 @@ body.dark-mode .snackbar {
 .snackbar.show {
   bottom: 24px; /* visible position */
   opacity: 1;
+}
+
+/* Ensure page doesn't have large empty space below last element in light/dark modes */
+body::after {
+  content: "";
+  display: block;
+  height: max(10px, var(--safe-bottom, 0px));
 }
