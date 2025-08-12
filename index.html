@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Jian Zhai (Francis) Zhang</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <!-- Favicon: penguin emoji -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🐧%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
@@ -17,11 +17,12 @@
     <div class="header-section">
       <div class="header-frame">
         <h1>
-          <span id="name-primary" class="name-primary" data-alt="張洊翟" data-phonetic="ㄓㄤ  ㄐㄧㄢˋ ㄓㄜˊ">Jian Zhai Zhang</span>
+          <strong><span id="name-primary" class="name-primary" data-alt="張洊翟" data-phonetic="ㄓㄤ  ㄐㄧㄢˋ ㄓㄜˊ">Jian Zhai Zhang</span></strong>
           <span class="name-secondary">Francis Phillips</span>
         </h1>
         <!-- Corrected the tagline grammar ("Undergraduated" → "Undergraduate") and kept the original formatting. -->
-        <h2>Undergraduated student in the department of 
+        <h2 style="line-height: 1.6;"> 
+          Undergraduated student in the department of 
           <a class="animated-link" href="https://ess.site.nthu.edu.tw/" style="color: rgb(255, 165, 0);">Engineering &amp; System Science</a>
           at 
           <a class="animated-link" href="https://nthu-en.site.nthu.edu.tw/" style="color: rgb(255, 165, 0);">National Tsing Hua University</a>, Taiwan.</h2>
@@ -204,7 +205,7 @@
         <h2 class="section-title">Research <br>Coming soon...</h2>
         <div class="filter-toggle">
           <label class="switch">
-            <input type="checkbox" id="filters-enabled" checked>
+            <input type="checkbox" id="filters-enabled">
             <span class="switch-ui" aria-hidden="true"></span>
             <span class="switch-text">Enable filters</span>
           </label>
@@ -246,20 +247,6 @@
           </div>
         </article>
 
-        <article class="paper research-entry" data-type="publication" data-year="2024" data-tags="signal-processing,image-processing,quantum-computing">
-          <div class="paper-thumb" aria-hidden="true">
-            <div class="thumb-placeholder">No image</div>
-          </div>
-          <div class="paper-content">
-            <h3 class="paper-title">Another Example Research Entry</h3>
-            <p class="paper-authors"><strong>Jian Zhai Zhang</strong></p>
-            <p class="paper-venue"><em>Preprint</em>, 2024</p>
-            <p class="paper-links">
-              <a class="animated-link" href="#" target="_blank" rel="noopener">arXiv</a>
-            </p>
-            <p class="paper-abstract">A brief teaser for the work. Replace with the actual highlight.</p>
-          </div>
-        </article>
         </div>
         
         <!-- Projects list -->
@@ -269,15 +256,18 @@
             <div class="thumb-placeholder">No image</div>
           </div>
           <div class="paper-content">
-            <h3 class="paper-title">Example Project Title</h3>
-            <p class="paper-authors"><strong>Jian Zhai Zhang</strong></p>
-            <p class="paper-venue"><em>Personal project</em>, 2025</p>
+            <h3 class="paper-title">A Bayesian Machine for Relaxed Energy Prediction on Metal-Oxide Catalysts for CO2 Reduction</h3>
+            <p class="paper-authors"><strong>Jian Zhai Zhang</strong> & Ying Hui Yan</p>
+            <p class="paper-venue"><em>arXiv</em>, 2025</p>
             <p class="paper-links">
-              <a class="animated-link" href="#" target="_blank" rel="noopener">project page</a>
+              <a class="animated-link" href="#" target="_blank" rel="noopener">Web page</a>
               /
-              <a class="animated-link" href="#" target="_blank" rel="noopener">code</a>
+              <a class="animated-link" href="#" target="_blank" rel="noopener">Report</a>
+              /
+              <a class="animated-link" href="#" target="_blank" rel="noopener">Code</a>
             </p>
-            <p class="paper-abstract">Short description of the project and its impact.</p>
+            <p class="paper-abstract">A Bayesian machine learning
+              model in this project to predict the relaxed energies of metal-oxide catalysts related to the reduction of carbon dioxide (CO₂RR)</p>
           </div>
         </article>
         </div>

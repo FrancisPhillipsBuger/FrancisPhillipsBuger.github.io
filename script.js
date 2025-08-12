@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateActiveButtons() {
-      const enableFilters = filtersToggle?.checked ?? true;
+      const enableFilters = filtersToggle?.checked ?? false;
       // Type buttons
       typeRow?.querySelectorAll('.menu-item.type').forEach(b => b.classList.toggle('active', b.dataset.type === state.type));
       // Year buttons
@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function applyFilters() {
-      const enableFilters = filtersToggle?.checked ?? true;
+      const enableFilters = filtersToggle?.checked ?? false;
       if (!enableFilters) {
         // If filters are disabled, show all entries in both lists
         [publicationList, projectList].forEach(list => {

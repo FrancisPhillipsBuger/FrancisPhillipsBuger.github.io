@@ -152,7 +152,7 @@ h1 {
 .name-secondary {
   display: block;
   line-height: 1.1;
-  font-size: 0.88em; /* slightly smaller than primary */
+  font-size: 0.7em; /* slightly smaller than primary */
   margin-top: 0.15em;
 }
 
@@ -807,6 +807,12 @@ body.dark-mode .skills-cards::after {
   color: #4a4b50;
 }
 
+/* Ensure primary author name stands out */
+.paper-authors strong {
+  font-weight: 700;
+  color: #111;
+}
+
 .paper-links a {
   color: #0099dc;
   text-decoration: none;
@@ -837,6 +843,10 @@ body.dark-mode .paper-venue,
 body.dark-mode .paper-links,
 body.dark-mode .paper-abstract {
   color: #d0d0d0;
+}
+
+body.dark-mode .paper-authors strong {
+  color: #fff;
 }
 
 /* Research filter menu (years/tags/type) inspired by cassidoo.co/blog */
