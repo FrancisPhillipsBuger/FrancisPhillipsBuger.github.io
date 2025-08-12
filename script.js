@@ -133,6 +133,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.querySelectorAll('[data-coming-soon]').forEach(bindComingSoon);
 
+  // Collapsible News section
+  const newsToggle = document.getElementById('news-toggle');
+  const newsCard = document.getElementById('news-card');
+  if (newsToggle && newsCard) {
+    const setLabel = () => {
+      const expanded = newsToggle.getAttribute('aria-expanded') === 'true';
+      newsToggle.textContent = expanded ? 'Show less' : 'Show more';
+    };
+    setLabel();
+    newsToggle.addEventListener('click', () => {
+      const expanded = newsToggle.getAttribute('aria-expanded') === 'true';
+      newsToggle.setAttribute('aria-expanded', String(!expanded));
+      newsCard.classList.toggle('collapsed', expanded);
+      setLabel();
+    });
+  }
+
   // --- Auto toggle primary name with typewriter effect (English <-> Chinese) ---
   const namePrimaryEl = document.getElementById('name-primary');
   if (namePrimaryEl) {
