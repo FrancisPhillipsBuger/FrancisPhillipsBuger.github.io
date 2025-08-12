@@ -887,3 +887,31 @@ body.dark-mode .research-menu {
   background: #0f0f10;
   border-color: #222;
 }
+
+/* Snackbar (bottom slide-up card) */
+.snackbar {
+  position: fixed;
+  left: 50%;
+  bottom: -80px; /* hidden below viewport initially */
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  transition: bottom 300ms ease, opacity 300ms ease;
+  opacity: 0;
+  z-index: 9999;
+}
+
+body.dark-mode .snackbar {
+  background: #222;
+  border-color: #555;
+  color: #fff;
+}
+
+.snackbar.show {
+  bottom: 24px; /* visible position */
+  opacity: 1;
+}

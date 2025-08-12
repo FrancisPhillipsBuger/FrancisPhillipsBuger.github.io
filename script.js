@@ -111,6 +111,25 @@ document.addEventListener('DOMContentLoaded', function () {
   setActiveNavFromHash();
   window.addEventListener('hashchange', setActiveNavFromHash);
 
+  // Snackbar: show temporary message when clicking Scholar/Github/CV links
+  const snackbar = document.getElementById('snackbar');
+  let snackbarTimer = null;
+
+  function bindComingSoon(link) {
+    if (!link || !snackbar) return;
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      snackbar.textContent = 'Coming soon';
+      snackbar.classList.add('show');
+      if (snackbarTimer) clearTimeout(snackbarTimer);
+      snackbarTimer = setTimeout(() => snackbar.classList.remove('show'), 5000);
+    });
+  }
+
+  bindComingSoon(document.getElementById('link-scholar'));
+  bindComingSoon(document.getElementById('link-github'));
+  bindComingSoon(document.getElementById('link-cv'));
+
   // --- Research filter menu (years, tags, type) ---
   const researchContainer = document.getElementById('research');
   if (researchContainer) {
