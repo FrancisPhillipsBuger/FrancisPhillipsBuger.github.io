@@ -131,9 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  bindComingSoon(document.getElementById('link-scholar'));
-  bindComingSoon(document.getElementById('link-github'));
-  bindComingSoon(document.getElementById('link-cv'));
+  document.querySelectorAll('[data-coming-soon]').forEach(bindComingSoon);
 
   // --- Auto toggle primary name with typewriter effect (English <-> Chinese) ---
   const namePrimaryEl = document.getElementById('name-primary');
