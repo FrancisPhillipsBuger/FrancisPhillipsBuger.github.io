@@ -62,7 +62,7 @@
         </a>
       </div>
       <div class="hero-thumb">
-        <img src="doc/projecr-co2rr/overview.png" alt="CO2RR" width="100%" height="100%" style="border: 0;">
+        <img src="doc/project-co2rr/overview.png" alt="CO2RR" width="100%" height="100%" style="border: 0;">
       </div>
     </div>
 
@@ -114,6 +114,24 @@
         <a class="animated-link" href="https://nesf3d.github.io/" target="_blank" style="color: rgb(0, 153, 220);">NeSF</a>.
       </small>
     </div>
+    <div id="snackbar" class="snackbar" role="status" aria-live="polite">Coming soon</div>
   </div>
+  <script>
+    (function(){
+      const snackbar = document.getElementById('snackbar');
+      if (!snackbar) return;
+      let t=null;
+      function showSoon(e){
+        e.preventDefault();
+        snackbar.textContent='Coming soon';
+        snackbar.classList.add('show');
+        if(t) clearTimeout(t);
+        t=setTimeout(()=>snackbar.classList.remove('show'), 3000);
+      }
+      document.querySelectorAll('[data-coming-soon]').forEach(a=>{
+        a.addEventListener('click', showSoon);
+      });
+    })();
+  </script>
 </body>
 </html>
