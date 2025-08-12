@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CO2RR Bayesian Energy Prediction</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .project-hero { margin: 28px 0 10px; }
+    .project-title { margin: 0; font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.2rem); line-height: 1.3; }
+    .project-subtitle { color: #96979c; margin: 6px 0 14px; font-size: 0.95rem; }
+    .project-authors { margin: 8px 0 0; }
+    .project-links { margin: 10px 0 22px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .project-links a { color: #0099dc; text-decoration: none; }
+    .project-links a:hover { text-decoration: underline; }
+    .project-section { margin: 26px 0; }
+    .project-section h3 { margin: 0 0 10px; font-size: 1.2rem; }
+    .hero-thumb { width: 100%; aspect-ratio: 16/9; border-radius: 12px; background: transparent; display: grid; place-items: center; color: #999; border: none; }
+    .pill { display: inline-block; padding: 2px 10px; border: 1px solid #eee; border-radius: 999px; font-size: 0.8rem; color: #666; }
+    .bibtex { white-space: pre; font-size: 0.8rem; background: #f6f6f6; border: 1px solid #eee; padding: 12px; border-radius: 10px; overflow: auto; }
+    @media (prefers-color-scheme: dark) {
+      body.dark-mode .hero-thumb { background: #1a1a1a; border-color: #333; color: #aaa; }
+      body.dark-mode .bibtex { background: #111; border-color: #333; color: #ddd; }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🐧%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Bayesian model for relaxed energy prediction on metal-oxide catalysts for CO2RR.">
+  <meta property="og:title" content="CO2RR Bayesian Energy Prediction">
+  <meta property="og:description" content="Bayesian model for relaxed energy prediction on metal-oxide catalysts for CO2RR.">
+</head>
+<body>
+  <div class="container">
+    <a class="home-fab" href="index.html" aria-label="Back to home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    </a>
+    <div class="research-hero">
+      <h1 class="hero-brand">Bayesian Machine</h1>
+      <h2 class="hero-title">A Bayesian Machine for Relaxed Energy Prediction on<br>Metal-Oxide Catalysts for CO<sub>2</sub> Reduction</h2>
+      <div class="hero-venue">arXiv 2025</div>
+      <p class="hero-authors">
+        </strong><a class="animated-link" href="index.html" style="color: rgb(0, 153, 220);">Jian Zhai Zhang</a><sup>*1</sup></strong>,
+        Ying Hui Yan<sup>*1</sup>.
+      </p>
+      <div class="hero-affiliations"><sup>1</sup>National Tsing Hua University,<sup>*</sup>Data Analysis and Interpretation Laboratory</div>
+      <div class="hero-actions" role="navigation" aria-label="Project quick links">
+        <a class="action is-purple" href="#" target="_blank" rel="noopener">
+          <img class="icon-img white" src="images/arxiv.svg" alt="arXiv" width="16" height="16" />
+          arXiv
+        </a>
+        <a class="action is-blue" href="#" target="_blank" rel="noopener">
+          <img class="icon-img white" src="images/github.png" alt="Code" width="16" height="16" />
+          Code
+        </a>
+        <a class="action is-orange" href="#" target="_blank" rel="noopener">
+          <img class="icon-img" src="images/huggingface.png" alt="Hugging Face" width="16" height="16" />
+          Data (HF)
+        </a>
+        <a class="action is-green" href="#" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3H3v18h18V3Zm-2 2v10l-3-3-4 4-3-3-4 4V5h14Z"/></svg>
+          Slides
+        </a>
+      </div>
+      <div class="hero-thumb">
+        <img src="doc/projecr-co2rr/overview.png" alt="CO2RR" width="100%" height="100%" style="border: 0;">
+      </div>
+    </div>
+
+    <div class="project-section">
+      <h3>Abstract</h3>
+      <p style="line-height:1.9; color:#4a4b50;">
+        As worries about climate change continue to rise, the goal of reaching net-zero carbon emissions has taken center stage worldwide. A particular approach is the electrochemical reduction of carbon dioxide (CO₂RR), which allows us to capture and transform carbon into valuable fuels or chemicals. At the heart of this process are effective electrocatalysts; metal-oxide materials stand out due to their adjustable surface characteristics and their potential for high performance in CO₂RR. However, identifying optimal catalysts feels a bit like searching for a needle in a haystack—mainly since first-principles simulations such as density functional theory (DFT) tend to consume massive amounts of computational resources. In contrast, we employ machine learning model trained on large datasets such as Open Catalyst Project 2022 (OC-22) dataset, which contains relaxed energy data for a wide range of electrocatalyst–adsorbate systems The model offers thousands of fast, accurate predictions at a small fraction of the computational cost compared to classical physical simulations.<br>
+        Therefore, we propose a Bayesian machine learning model in this project to predict the relaxed energies of metal-oxide catalysts from the OC-22 dataset. 
+      </p>
+    </div>
+
+    <div class="project-section">
+      <h3>Method Overview</h3>
+      <p style="line-height:1.9; color:#4a4b50;">
+        We propose a Bayesian machine learning framework to predict relaxed energies of metal-oxide catalysts using the OC-22 dataset, aiming for high interpretability and low computational cost.<br>
+        The dataset was reorganized by adsorbate type (*O, *OH, *CO) to form LMDB subsets, capturing catalytic fingerprints. Structural features—atomic positions, distances, local/global environment descriptors—were extracted, with RBF features at 2.0 Å (covalent bonds) and 4.0 Å (non-bonded interactions).<br>
+        Dimensionality was reduced from 18 to 14 descriptors via PCA (99.5% variance retained), enabling efficient processing. A fifth-order polynomial regression was then trained, with SVD ensuring stability for high-order terms.<br>
+        Model selection employed a modified Bayesian Information Criterion (mBIC) with adaptive penalties, identifying the feature subset offering the best complexity–accuracy trade-off. To mitigate overfitting and model uncertainty, Bayesian Model Averaging (BMA) combined predictions from top-ranked models.<br>
+        Finally, a residual learning step applied a linear correction to the polynomial baseline, refining predictions and reducing systematic error.<br>
+        This approach balances accuracy, transparency, and scalability, making it well-suited for early-stage catalyst screening.
+    </p>
+    </div>
+
+    <div class="project-section">
+      <h3>Results</h3>
+      <p style="line-height:1.9; color:#4a4b50;">
+        The proposed Bayesian framework (BF), integrating PCA, fifth-order polynomial regression, mBIC-based model selection, Bayesian Model Averaging (BMA), and residual learning, achieved strong agreement with DFT-calculated relaxed energies while maintaining high interpretability.<br>
+        Using 14 principal components (capturing 99.5% variance), the optimal model minimized mBIC at 13 PCs. On the test set, the BMA + residual model reached R² = 0.8445, MAPE = 14.37%, RMSE = 86.98 eV, and MAE = 67.28 eV. Predictions were tightly clustered along the y = x line, with errors following a near-Gaussian distribution centered at zero, indicating minimal bias.<br>
+        While slightly less accurate than state-of-the-art GNN models (e.g., GemNet-OC R² ≈ 0.997), the BF method offers faster training, lower hardware requirements, and uncertainty quantification—advantages critical for large-scale catalyst screening. Deviations at extreme low energies (< –1000 eV) were attributed to missing quantum descriptors (e.g., Bader charge, spin polarization) and limited data coverage.<br>
+        Overall, the BF model demonstrates a viable trade-off between prediction accuracy and model transparency, enabling scalable, interpretable materials discovery workflows.<br>
+      </p>
+    </div>
+    <div class="project-section">
+      <h3>Paper</h3>
+      
+    </div>
+
+    <div class="project-section">
+      <h3>BibTeX</h3>
+      <div class="bibtex">@misc{zhang2025co2rr,
+  title={A Bayesian Machine for Relaxed Energy Prediction on Metal-Oxide Catalysts for CO2 Reduction},
+  author={Zhang, Jian Zhai and Yan, Ying Hui},
+  year={2025},
+  eprint={pending},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG}
+}
+      </div>
+    </div>
+
+    <div class="attribution">
+      <small>
+        Website design adapted from and inspired by these two interesting websites:
+        <a class="animated-link" href="https://nerfies.github.io/" target="_blank" style="color: rgb(255, 68, 107);">nerfies</a> and
+        <a class="animated-link" href="https://nesf3d.github.io/" target="_blank" style="color: rgb(0, 153, 220);">NeSF</a>.
+      </small>
+    </div>
+  </div>
+</body>
+</html>

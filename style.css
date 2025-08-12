@@ -1054,3 +1054,170 @@ body.dark-mode .snackbar {
 
 /* Ensure page doesn't have large empty space below last element in light/dark modes */
 /* Remove explicit height and pseudo-footer to prevent extra scroll space. */
+
+/* --- Research hero (AuraFusion-like) for project pages --- */
+.research-hero {
+  margin: 38px 0 18px;
+  text-align: center;
+}
+
+.hero-brand {
+  margin: 0 0 6px 0;
+  font-size: clamp(1.4rem, 1.1rem + 1.3vw, 1.8rem);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+  background: linear-gradient(90deg, #ff8a00 0%, #ffb84d 45%, #ff5e62 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* Glow */
+  text-shadow: 0 0 8px rgba(255, 138, 0, 0.35), 0 0 16px rgba(255, 94, 98, 0.25);
+  filter: drop-shadow(0 0 6px rgba(255, 138, 0, 0.18));
+}
+
+.hero-title {
+  margin: 6px 0 10px;
+  font-size: clamp(1.3rem, 1.1rem + 1vw, 1.6rem);
+  line-height: 1.5;
+  font-weight: 600;
+  color: #222;
+}
+
+body.dark-mode .hero-title { color: #eee; }
+
+.hero-venue {
+  font-size: clamp(0.9rem, 0.85rem + 0.5vw, 1.1rem);
+  margin: 6px 0 8px;
+  font-weight: 600;
+}
+
+.hero-authors {
+  margin: 8px auto 4px;
+  max-width: 1000px;
+  line-height: 1.8;
+  font-size: clamp(0.9rem, 0.85rem + 0.5vw, 1.1rem);
+}
+
+.hero-authors a {
+  color: rgb(0, 153, 220);
+  text-decoration: none;
+}
+
+/* Bold highlight for the main author linking to home */
+.hero-authors a[href="index.html"] {
+  font-weight: 700;
+}
+
+.hero-authors a:hover { text-decoration: underline; }
+
+.hero-affiliations {
+  margin: 2px 0 14px;
+  color: #96979c;
+  font-size: 0.95rem;
+}
+
+.hero-actions {
+  margin: 8px 0 18px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hero-actions .action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  border: 1px solid #3b3c3f;
+  background: linear-gradient(180deg, #353637 0%, #2f3032 100%);
+  color: #fff !important;
+  -webkit-text-fill-color: #fff;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: background-color 160ms ease, border-color 160ms ease, transform 80ms ease, box-shadow 160ms ease;
+}
+
+.hero-actions .action:link,
+.hero-actions .action:visited { color: #fff !important; -webkit-text-fill-color: #fff; }
+
+.hero-actions .action:hover {
+  background: linear-gradient(180deg, #3f4043 0%, #37383b 100%);
+  border-color: #4a4c50;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 2px 6px rgba(0,0,0,0.28);
+}
+
+.hero-actions .action:active { transform: translateY(1px); }
+
+.hero-actions .action:focus-visible {
+  outline: 2px solid #74c7ec;
+  outline-offset: 2px;
+}
+
+.action .emoji { font-size: 0.95rem; opacity: 0.95; }
+/* SVG icon style for Nerfies-like buttons */
+.action .icon { width: 16px; height: 16px; fill: currentColor; display: inline-block; opacity: 0.95; }
+/* Raster/SVG image icon support */
+.action .icon-img { width: 16px; height: 16px; display: inline-block; object-fit: contain; vertical-align: middle; }
+/* Force white for monochrome black icons (e.g., GitHub, arXiv) */
+.action .icon-img.white { filter: brightness(0) invert(1); }
+
+/* Accent variations: keep text white; tint only the leading icon */
+.hero-actions .action.is-blue,
+.hero-actions .action.is-green,
+.hero-actions .action.is-orange,
+.hero-actions .action.is-purple { color: inherit; }
+
+.hero-actions .action.is-blue .emoji { color: #7ab8ff; }
+.hero-actions .action.is-green .emoji { color: #66d19e; }
+.hero-actions .action.is-orange .emoji { color: #ffb84d; }
+.hero-actions .action.is-purple .emoji { color: #b18cff; }
+
+/* Dark mode variants */
+body.dark-mode .hero-authors a { color: #7ab8ff; }
+body.dark-mode .hero-affiliations { color: #aaa; }
+body.dark-mode .hero-actions .action {
+  background: #2f3032;
+  border-color: #2a2a2c;
+  color: #fff;
+}
+body.dark-mode .hero-actions .action:hover {
+  background: #38393b;
+  border-color: #3a3a3d;
+}
+
+/* Reset generic image borders just in case */
+img { border: 0; }
+
+/* --- Fixed Home button (top-right) --- */
+.home-fab {
+  position: fixed;
+  top: max(12px, var(--safe-top, 0px));
+  right: max(12px, var(--safe-right, 0px));
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: #2f3032;
+  color: #fff;
+  border: 1px solid #3b3c3f;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  text-decoration: none;
+  z-index: 10000;
+}
+
+.home-fab:hover { background: #3a3b3e; border-color: #4a4c50; }
+.home-fab:active { transform: translateY(1px); }
+.home-fab:focus-visible { outline: 2px solid #74c7ec; outline-offset: 2px; }
+
+.home-fab svg { width: 20px; height: 20px; fill: currentColor; }
+
+/* Dark mode keeps contrast */
+body.dark-mode .home-fab { background: #2a2b2d; color: #fff; border-color: #35373a; }
+body.dark-mode .home-fab:hover { background: #343639; border-color: #43464a; }
