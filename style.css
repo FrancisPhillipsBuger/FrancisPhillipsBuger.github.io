@@ -553,7 +553,7 @@ body.dark-mode .skills-cards::-webkit-scrollbar-thumb {
 .skills-cards::before,
 .skills-cards::after {
   content: "";
-  position: absolute;
+  position: sticky;
   top: 0;
   width: 56px;
   height: 100%;
