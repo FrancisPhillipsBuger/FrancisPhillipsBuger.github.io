@@ -716,7 +716,7 @@ body.dark-mode .skills-cards::after {
 
 /* Research section (modeled after Jon Barron’s compact card list) */
 .research-section {
-  margin-top: 60px;
+  margin: 60px 0 24px;
   padding-top: 20px;
   border-top: 2px solid #eaeaea; /* separate from previous area */
 }
@@ -1053,10 +1053,4 @@ body.dark-mode .snackbar {
 }
 
 /* Ensure page doesn't have large empty space below last element in light/dark modes */
-html, body { height: 100%; }
-/* Provide a small breathing space after the last element without causing overflow */
-body::after {
-  content: "";
-  display: block;
-  height: max(16px, var(--safe-bottom, 0px));
-}
+/* Remove explicit height and pseudo-footer to prevent extra scroll space. */
